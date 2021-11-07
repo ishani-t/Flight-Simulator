@@ -22,3 +22,6 @@ However if a team member is habitually not completing their tasks, they may be a
 members.
 
 3. Conflict Resolution All conflicts within the team will be settled in a team meeting. Those not involved in the conflict will serve as mediators. Those in conflice will have the chance to speak - if votes are even, we will bring in a neutral third party (our roommate - Peter, who is in mock trial) to settle. 
+
+## signatures 
+nealt2
