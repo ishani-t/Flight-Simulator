@@ -28,18 +28,13 @@ std::vector<std::vector<std::string>> Parser::getData() {
 
 
 vector<string> Parser::convertLineToVector(const string &line) {
-    std::cout << line << std::endl;
     vector<string> lineVec;
-    lineVec.push_back("hi");
+    stringstream s_stream(line); // create string stream from string
+    while(s_stream.good()) {
+        string val;
+        getline(s_stream, val, ','); // get first string delimited by comma
+        lineVec.push_back(val);
+    }
     return lineVec;
-    // std::istringstream lineStream(line);
-    // std::string val;
-
-    // std::vector<std::string> lineVec;
-
-    // while(std::getline(lineStream, val, ",")) {
-    //     lineVec.push_back(val);
-    // }
-    // return lineVec;
 }
 
