@@ -1,11 +1,10 @@
-#include "Parser.h"
+#include "../src/Parser.h"
 
 #include <fstream>
 #include <sstream>
 
 #include <string>
 #include <vector>
-
 
 
 Parser::Parser(const string &filepath) {
@@ -38,3 +37,4 @@ vector<string> Parser::convertLineToVector(const string &line) {
     }
     return lineVec;
 }
+

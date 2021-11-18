@@ -1,6 +1,6 @@
 #pragma once
 
-// #include <fstream>
+#include <fstream>
 #include <vector>
 
 using namespace std;
@@ -22,4 +22,4 @@ class Parser {
 
         std::vector<std::vector<std::string>> data_;
 
-}
+};
