@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 #include <string>
 #include <vector>
@@ -27,14 +28,18 @@ std::vector<std::vector<std::string>> Parser::getData() {
 
 
 vector<string> Parser::convertLineToVector(const string &line) {
-    std::istringstream lineStream(line);
-    std::string val;
-
-    std::vector<std::string> lineVec;
-
-    while(std::getline(lineStream, val, ",")) {
-        lineVec.push_back(val);
-    }
+    std::cout << line << std::endl;
+    vector<string> lineVec;
+    lineVec.push_back("hi");
     return lineVec;
+    // std::istringstream lineStream(line);
+    // std::string val;
+
+    // std::vector<std::string> lineVec;
+
+    // while(std::getline(lineStream, val, ",")) {
+    //     lineVec.push_back(val);
+    // }
+    // return lineVec;
 }
 
