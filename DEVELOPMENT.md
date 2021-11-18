@@ -1,0 +1,4 @@
+## Development Log
+
+### Week 1
+This week, we researched the traversal and algorithms we will be implementing in greater detail to further our understanding of how we should approach the project. We set up our repository by organizing the directories and adding the airport and route data files we will be using. Next, we created a class to parse the CSV files into a vector of vector of strings, where each vector represents a line in the CSV and each string represents a comma separated value. We then had some trouble attempting to compile our project, but we ultimately managed to use CMake to build and make our files. With this, we accomplished our initial weekly goal of setting up our repository and downloading and parsing the dataset.

@@ -35,6 +35,7 @@ vector<string> Parser::convertLineToVector(const string &line) {
         getline(s_stream, val, ','); // get first string delimited by comma
         lineVec.push_back(val);
     }
+    
     return lineVec;
 }
 
