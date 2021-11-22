@@ -1,5 +1,5 @@
 EXENAME = flight_sim
-OBJS = main.o Parser.o
+OBJS = main.o Parser.o Edge.o Flights.o Node.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -30,9 +30,17 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-# Need to add file.cpp
 Parser.o:  src/Parser.cpp
 	$(CXX) $(CXXFLAGS) src/Parser.cpp
+
+Node.o:  src/Node.cpp
+	$(CXX) $(CXXFLAGS) src/Node.cpp
+
+Edge.o:  src/Edge.cpp
+	$(CXX) $(CXXFLAGS) src/Edge.cpp
+
+Flights.o:  src/Flights.cpp
+	$(CXX) $(CXXFLAGS) src/Flights.cpp
 
 main.o : main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
