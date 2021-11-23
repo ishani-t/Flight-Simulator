@@ -16,3 +16,11 @@ Node::Node(string n, string c, double lat, double lon, double alt)
 string Node::getCode() {
     return code_;
 }
+
+double Node::getLat() {
+    return latitude_;
+}
+
+double Node::getLong() {
+    return longitude_;
+}

@@ -10,6 +10,8 @@ class Edge
 {
 public:
     Edge(Node s, Node e, int w); //possibly add a label?
+    Node getStart();
+    Node getEnd();
 
 private:
     Node start_;

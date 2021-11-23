@@ -16,4 +16,6 @@ public:
     Node();
     Node(string n, string c, double lat, double lon, double alt);
     string getCode();
+    double getLat();
+    double getLong();
 };

@@ -7,15 +7,17 @@
 #include <string>
 
 using std::string;
+using std::vector;
 
-class Flights {
+class Flights
+{
 
 public:
-    Flights(std::vector<std::vector<std::string>> a, std::vector<std::vector<std::string>> p);
-    void createAirports(std::vector<std::vector<std::string>> data);
-    void createPaths(std::vector<std::vector<std::string>> data);
+    Flights(vector<vector<string>> a, vector<vector<string>> p);
+    void createAirports(vector<vector<string>> data);
+    void createPaths(vector<vector<string>> data);
+    vector<Node> getAdjacentNodes(Node airport);
     
-
 private:
     std::vector<Node> airports_;
     std::vector<Edge> paths_;

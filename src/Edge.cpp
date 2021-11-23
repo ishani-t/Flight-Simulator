@@ -5,3 +5,11 @@ Edge::Edge(Node s, Node e, int w) {
     end_ = e;
     weight_ = w;
 }
+
+Node Edge::getStart() {
+    return start_;
+}
+
+Node Edge::getEnd() {
+    return end_;
+}
