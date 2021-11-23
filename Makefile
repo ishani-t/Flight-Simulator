@@ -1,5 +1,9 @@
+# Executable names:
+EXE = flights_sim
+TEST = test
+
 EXENAME = flight_sim
-OBJS = main.o Parser.o Edge.o Flights.o Node.o
+OBJS = main.o Parser.o Edge.o Flights.o Node.o BFS.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -42,8 +46,14 @@ Edge.o:  src/Edge.cpp
 Flights.o:  src/Flights.cpp
 	$(CXX) $(CXXFLAGS) src/Flights.cpp
 
+BFS.o:  src/BFS.cpp
+	$(CXX) $(CXXFLAGS) src/BFS.cpp
+
 main.o : main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
+
+test: output_msg catch/catchmain.cpp tests/bfs_test.cpp BFS.cpp Edge.cpp Flights.cpp Node.cpp Parser.cpp
+	$(LD) catch/catchmain.cpp tests/bfs_test.cpp BFS.cpp Edge.cpp Flights.cpp Node.cpp Parser.cpp $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test
