@@ -58,6 +58,14 @@
         "string": "cpp",
         "chrono": "cpp",
         "ratio": "cpp",
-        "__mutex_base": "cpp"
+        "__mutex_base": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "stack": "cpp",
+        "string_view": "cpp"
     }
 }

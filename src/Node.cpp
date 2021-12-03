@@ -24,3 +24,8 @@ double Node::getLat() {
 double Node::getLong() {
     return longitude_;
 }
+
+bool Node::operator==(const Node& rhs) const {
+    return (this->name_ == rhs.name_) && (this->code_ == rhs.code_) && (this->latitude_ == rhs.latitude_) 
+        && (this->longitude_ == rhs.longitude_) && (this->altitude_ == rhs.altitude_);
+}

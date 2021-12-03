@@ -18,4 +18,6 @@ public:
     string getCode();
     double getLat();
     double getLong();
+
+    bool operator==(const Node& rhs) const;
 };

@@ -9,12 +9,12 @@
 class Edge
 {
 public:
-    Edge(Node s, Node e, int w); //possibly add a label?
-    Node getStart();
-    Node getEnd();
+    Edge(Node& s, Node& e, double w); //possibly add a label?
+    Node& getStart();
+    Node& getEnd();
 
 private:
     Node start_;
     Node end_;
-    int weight_;
+    double weight_;
 };

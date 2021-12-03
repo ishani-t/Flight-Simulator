@@ -33,6 +33,7 @@ vector<string> Parser::convertLineToVector(const string &line) {
     while(s_stream.good()) {
         string val;
         getline(s_stream, val, ','); // get first string delimited by comma
+        val.erase(remove(val.begin(),val.end(),'\"' ),val.end()); //removes abundant quotations from strings
         lineVec.push_back(val);
     }
     

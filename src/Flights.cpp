@@ -15,9 +15,28 @@ void Flights::createAirports(vector<vector<string>> data)
         double lat = atof(data[i][6].c_str());
         double lon = atof(data[i][7].c_str());
         double alt = atof(data[i][8].c_str());
-        Node n(data[i][0], data[i][4], lat, lon, alt);
+        Node n(data[i][1], data[i][4], lat, lon, alt);
         airports_.push_back(n);
     }
+}
+
+double Flights::findWeight(Node start, Node end) {
+    //https://www.geeksforgeeks.org/program-distance-two-points-earth/
+    double lat1 = start.getLat() * M_PI / 180;
+    double lat2 = end.getLat() * M_PI / 180;
+    double long1 = start.getLong() * M_PI / 180;
+    double long2 = end.getLong() * M_PI / 180;
+
+    double dLat = lat2 - lat1;
+    double dLong = long2 - long1;
+
+    double weight = pow(sin(dLat / 2), 2) +
+                    cos(lat1) * cos(lat2) *
+                        pow(sin(dLong / 2), 2);
+
+    weight = 2 * asin(sqrt(weight));
+    double radius = 6371;
+    return weight * radius;
 }
 
 void Flights::createPaths(vector<vector<string>> data)
@@ -39,22 +58,7 @@ void Flights::createPaths(vector<vector<string>> data)
                 end = airports_[j];
             }
         }
-        //https://www.geeksforgeeks.org/program-distance-two-points-earth/
-        double lat1 = start.getLat() * M_PI / 180;
-        double lat2 = end.getLat() * M_PI / 180;
-        double long1 = start.getLong() * M_PI / 180;
-        double long2 = end.getLong() * M_PI / 180;
-
-        double dLat = lat2 - lat1;
-        double dLong = long2 - long1;
-
-        double weight = pow(sin(dLat / 2), 2) +
-                        cos(lat1) * cos(lat2) *
-                            pow(sin(dLong / 2), 2);
-
-        weight = 2 * asin(sqrt(weight));
-        double radius = 6371;
-        weight = weight * radius;
+        double weight = findWeight(start, end);
         Edge e(start, end, weight);
         paths_.push_back(e);
     }
@@ -77,3 +81,12 @@ vector<Node> Flights::getAdjacentNodes(Node airport)
     }
     return adj_airports;
 }
+
+vector<Node>& Flights::getAirports() {
+    return airports_;
+}
+
+vector<Edge>& Flights::getPaths() {
+    return paths_;
+}
+

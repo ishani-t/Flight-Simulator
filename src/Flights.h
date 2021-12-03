@@ -18,6 +18,10 @@ public:
     void createPaths(vector<vector<string>> data);
     vector<Node> getAdjacentNodes(Node airport);
     
+    vector<Node>& getAirports();
+    vector<Edge>& getPaths();
+    double findWeight(Node start, Node end);
+
 private:
     std::vector<Node> airports_;
     std::vector<Edge> paths_;
