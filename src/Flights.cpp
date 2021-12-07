@@ -64,20 +64,20 @@ void Flights::createPaths(vector<vector<string>> data)
     }
 }
 
-vector<Node> Flights::getAdjacentNodes(Node airport)
+vector<Node> Flights::getAdjacentNodes(Node airport_code)
 {
     vector<Node> adj_airports = vector<Node>();
 
     for (unsigned long i = 0; i < paths_.size(); i++)
     {
-        if (paths_[i].getStart().getCode() == airport.getCode())
+        if (paths_[i].getStart().getCode() == airport_code.getCode())
         {
             adj_airports.push_back(paths_[i].getEnd());
         }
-        else if (paths_[i].getEnd().getCode() == airport.getCode())
-        {
-            adj_airports.push_back(paths_[i].getStart());
-        }
+        // else if (paths_[i].getEnd().getCode() == airport_code.getCode())
+        // {
+        //     adj_airports.push_back(paths_[i].getStart());
+        // }
     }
     return adj_airports;
 }

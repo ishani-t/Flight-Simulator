@@ -13,3 +13,7 @@ Node& Edge::getStart() {
 Node& Edge::getEnd() {
     return end_;
 }
+
+double Edge::getWeight() {
+    return weight_;
+}
