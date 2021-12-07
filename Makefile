@@ -53,7 +53,7 @@ main.o : main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
 
 test: output_msg catch/catchmain.cpp tests/bfs_test.cpp tests/parser_test.cpp tests/flights_test.cpp src/Edge.cpp src/Flights.cpp src/Node.cpp src/Parser.cpp
-	$(LD) catch/catchmain.cpp tests/bfs_test.cpp tests/parser_test.cpp tests/flights_test.cpp src/Edge.cpp src/Flights.cpp src/Node.cpp src/Parser.cpp $(LDFLAGS) -o test
+	$(LD) catch/catchmain.cpp tests/bfs_test.cpp tests/parser_test.cpp tests/flights_test.cpp src/Edge.cpp src/Flights.cpp src/Node.cpp src/Parser.cpp src/BFS.cpp $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test

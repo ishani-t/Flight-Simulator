@@ -1,17 +1,18 @@
 #include "BFS.h"
 #include <algorithm>
 
-
-std::vector<Node> traversal(Flights & flights, Node & start) {
+std::vector<Node> BFS::traversal(Flights & flights, Node & start) {
     std::queue<Node> queue;
     queue.push(start);
     std::vector<Node> reachableAirports;
     std::vector<Node> airports = flights.getAirports();
     std::vector<bool> visited;
+    
     auto sourceIterator = find(airports.begin(), airports.end(), start);
     int sourceIndex = distance(airports.begin(), sourceIterator);
+    
     for (unsigned long i = 0; i < flights.getAirports().size(); i++) {
-        visited[i] = false;
+        visited.push_back(false);
     }
     visited[sourceIndex] = true;
 
@@ -32,5 +33,6 @@ std::vector<Node> traversal(Flights & flights, Node & start) {
             }
         }
     }
+    
     return reachableAirports;
 } 

@@ -5,3 +5,6 @@ This week, we researched the traversal and algorithms we will be implementing in
 
 ### Week 2
 This week, we met to further research together and discuss what kind of approach we would take when implementing the BFS traversal, Dijkstra's algorithm, and the visual graph. We also created separate classes for Node and Edge objects to facilitate the graph formation. We then finished methods to parse our vector of vectors of strings representing airports into a Node objects, as well as our data on the different routes between airports into Edge objects. We then divided and assigned the work to attempt to implement the BFS traversal and Dijkstra's algorithm.
+
+### Week 3
+This week, we were mainly working on coding the BFS traversal and Dijkstra's algorithm, which are their own separate classes. We finished BFS along with its helper methods in the Flight class and wrote its respective test cases. We are almost done with Dijkstra's algorithm. Additionally, we added the catch files to support testing and wrote tests for the Flights and Parser classes that we wrote last week. Lastly, we started discussing we will implement our graphical output. 
