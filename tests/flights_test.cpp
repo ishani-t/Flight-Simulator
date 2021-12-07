@@ -40,6 +40,8 @@ TEST_CASE("Check sample flights vectors of nodes and edges are accurate") {
     SECTION("Test vector of route edges") {
         std::vector<Edge> edges = flights.getPaths();
         REQUIRE(edges.size() == 5);
+        REQUIRE(edges[0].getStart().getCode() == "ORD");
+        REQUIRE(edges[0].getEnd().getCode() == "AZO");
     }
 
     //Fix test file and add more test cases for edges

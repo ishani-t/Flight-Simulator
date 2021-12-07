@@ -18,5 +18,4 @@ TEST_CASE("Test shortest path") {
     REQUIRE(path.size() == 2);
     REQUIRE(path[0] == "CLE");
     REQUIRE(path[1] == "CVG");
-
 }

@@ -48,7 +48,7 @@ TEST_CASE("Parsing sample routes data file") {
     }
 
     SECTION("Check first line values are accurate") {
-        std::vector<string> first{"2G","1654","UKX","6924","IKT","2937","","0","AN4"};
+        std::vector<string> first{"US","5265","ORD","3830","AZO","4039","Y","0","ER4 ERD"};
         REQUIRE(routes[0] == first);
     }
 }
