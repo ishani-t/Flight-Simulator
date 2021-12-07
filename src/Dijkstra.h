@@ -3,28 +3,42 @@
 #include "Edge.h"
 #include "Node.h"
 
+#include <utility>
 #include <vector>
 #include <list>
 #include <string>
 #include <unordered_map>
 #include <queue>
 
-using std::vector;
+using namespace std;
+
+//https://courses.engr.illinois.edu/cs225/fa2021/resources/dijkstra/
 
 class Dijkstra {
     public:
-        Dijkstra(Flights graph, string start, string destination);
-        void solveDijkstra();
+        void solveDijkstra(Flights graph, string start, string destination);
+        vector<string> findShortestPath();
 
     private:
-        Flights graph_;
+        Node findNode(vector<Node> nodes, string code);
+        double findEdgeWeight(vector<Edge> edges, Node start, Node end);
+
+        //Flights graph_;
         Node start_airport_;
         Node dest_airport_;
         
         vector<Node> nodes_;
-        std::unordered_map<string,string> previous_; //maps current node to previous node
-        std::unordered_map<string, double> distances_;
-        vector<bool> visited_;
-        std::priority_queue<int, vector<int>, greater<int> > q;
 
-}
+        //maps current node to previous node
+        std::unordered_map<string,string> previous_;
+
+        //total distance values from starting node
+        std::unordered_map<string, double> distances_; 
+
+        //all nodes that have been visited
+        std::unordered_map<string,bool> visited_; 
+
+        //finds the next closest unvisited node
+        priority_queue< pair<double,string>, vector<pair<double,string> >, greater< pair<double,string>> > pq_;
+        vector<string> shortest_path;
+};
