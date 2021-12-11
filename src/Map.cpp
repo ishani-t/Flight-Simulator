@@ -3,13 +3,14 @@
 #include <cmath>
 
 Map::Map(vector<Node> airports) {
-    
+    airports_ = airports;
 }
 
 std::pair<double, double> Map::getCoordinates(string code) {
-    for (size_t i = 0; i < airports.size(); i++) {
-        if (airports[i].getCode() == code) {
-            return airports[i];
+    for (size_t i = 0; i < airports_.size(); i++) {
+        if (airports_[i].getCode() == code) {
+            std::pair<double, double> coordinates (airports_[i].getLat(), airports_[i].getLong());
+            return coordinates;
         }
     }
 }
