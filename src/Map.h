@@ -2,6 +2,8 @@
 
 #include "Edge.h"
 #include "Node.h"
+#include "../cs225/PNG.h"
+#include "Dijkstra.h"
 
 #include <vector>
 #include <string>
@@ -14,7 +16,8 @@ class Map
 
 public:
     // Constructor will accept the vector of all airports in the map
-    Map(vector<Node> airports);
+    //Map(vector<Node> airports);
+    Map(Flights graph, string start, string destination, string inputImagePath, string outputImagePath);
 
     // getCoordinates will go through the vector of airports and return the latitude and longitude of a specific
     std::pair<double, double> getCoordinates(string code);
@@ -28,11 +31,16 @@ public:
      * inputImagePath: path to the map PNG we will draw onto
      * outputImagePath: where the image will be saved to
      */
-    void drawFlight(vector<string> path, string inputImagePath, string outputImagePath);
+    //void drawFlight(vector<string> path, string inputImagePath, string outputImagePath);
+    void drawFlight(vector<string> path);
 
 private:
     std::vector<Node> airports_;
 
     // helper function: will draw a line onto the map (will call this for each pair of airports being travelled between)
-    void drawLine(string a1, string a2, string inputImagePath, string ouputImagePath);
+    //void drawLine(string a1, string a2, string inputImagePath, string ouputImagePath);
+    void drawLine(string a1, string a2);
+    cs225::PNG blank_map_;
+    int width_;
+    int height_;
 };
