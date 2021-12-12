@@ -3,7 +3,7 @@ EXE = flights_sim
 TEST = test
 
 EXENAME = flight_sim
-OBJS = main.o Parser.o Edge.o Flights.o Node.o BFS.o
+OBJS = main.o Parser.o Edge.o Flights.o Node.o BFS.o Map.o Dijkstra.o PNG.o HSLAPixel.o lodepng.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -48,6 +48,21 @@ Flights.o:  src/Flights.cpp
 
 BFS.o:  src/BFS.cpp
 	$(CXX) $(CXXFLAGS) src/BFS.cpp
+
+Map.o:  src/Map.cpp
+	$(CXX) $(CXXFLAGS) src/Map.cpp
+
+Dijkstra.o:  src/Dijkstra.cpp
+	$(CXX) $(CXXFLAGS) src/Dijkstra.cpp
+
+PNG.o: cs225/PNG.cpp
+	$(CXX) $(CXXFLAGS) cs225/PNG.cpp
+
+HSLAPixel.o: cs225/HSLAPixel.cpp
+	$(CXX) $(CXXFLAGS) cs225/HSLAPixel.cpp
+
+lodepng.o: cs225/lodepng/lodepng.cpp
+	$(CXX) $(CXXFLAGS) cs225/lodepng/lodepng.cpp
 
 main.o : main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
