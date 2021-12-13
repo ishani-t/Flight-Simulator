@@ -1,16 +1,17 @@
 #include "Map.h"
 #include <stdlib.h>
 #include <cmath>
+#include <iostream>
 
 //Map::Map(vector<Node> airports)
-Map::Map(Flights graph, string start, string destination, string inputImagePath, string outputImagePath)
+Map::Map(vector<string> path, string inputImagePath, string outputImagePath, vector<Node> airports)
 {
+    airports_ = airports;
+
     blank_map_.readFromFile(inputImagePath);
     height_ = blank_map_.height();
     width_ = blank_map_.width();
-    Dijkstra d;
-    d.solveDijkstra(graph, start, destination);
-    vector<string> path = d.findShortestPath();
+
     drawFlight(path);
     blank_map_.writeToFile(outputImagePath);
 }
@@ -24,24 +25,26 @@ std::pair<double, double> Map::getCoordinates(string code)
             return std::make_pair(airports_[i].getLat(), airports_[i].getLong());
         }
     }
+    return std::make_pair(0.0, 0.0);
 }
 
 std::pair<int, int> Map::getImagePixels(std::pair<double, double> coordinates)
 {
-    //NOTE: this might be very wrong my geography and math knowledge are both low :(
-    //also this is really based on the assumption that the equator and prime meridian are in the middle i think
     //latitude
-    int equator = height_ / 2;
-    int lat_scale = height_ / 180;
-    int x_coord = equator * lat_scale + coordinates.first * lat_scale;
+    float equator = 200;
+    float x_coord = equator - coordinates.first * 315/180;
+    
     //longitude
-    int prime_meridian = width_ / 2;
-    int long_scale = height_ / 360;
-    int y_coord = prime_meridian * long_scale + coordinates.second * long_scale;
-    return std::make_pair(x_coord, y_coord);
+    float prime_meridian = 370;
+    float y_coord = prime_meridian + coordinates.second * 630/360;
+
+    // converting floats to ints
+    int x_val = static_cast<int>(x_coord);
+    int y_val = static_cast<int>(y_coord);
+
+    return std::make_pair(y_val, x_val);
 }
 
-//void Map::drawFlight(vector<string> path, string inputImagePath, string outputImagePath)
 void Map::drawFlight(vector<string> path)
 {
     for (unsigned long i = 0; i < path.size() - 1; i++)
@@ -50,11 +53,11 @@ void Map::drawFlight(vector<string> path)
     }
 }
 
-//void Map::drawLine(string a1, string a2, string inputImagePath, string ouputImagePath)
 void Map::drawLine(string a1, string a2)
 {
     std::pair<int, int> coord_1 = getCoordinates(a1);
     std::pair<int, int> pixels_1 = getImagePixels(coord_1);
+
     std::pair<int, int> coord_2 = getCoordinates(a2);
     std::pair<int, int> pixels_2 = getImagePixels(coord_2);
 
@@ -81,7 +84,10 @@ void Map::drawLine(string a1, string a2)
     for (int x = x1; x < x2; x++)
     {
         int y = slope * x + b;
-        cs225::HSLAPixel pixel = blank_map_.getPixel(x, y);
-        pixel.h = 50;
-    }
+        cs225::HSLAPixel &pixel = blank_map_.getPixel(x, y);
+        pixel.h = 0;
+        pixel.s = 1;
+        pixel.l = 0.50;
+        pixel.a = 1.0;
+    }    
 }

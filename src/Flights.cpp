@@ -1,6 +1,7 @@
 #include "Flights.h"
 #include <stdlib.h>
 #include <cmath>
+#include <iostream>
 
 Flights::Flights(vector<vector<string>> a, vector<vector<string>> p)
 {

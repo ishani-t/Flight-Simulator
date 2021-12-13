@@ -17,7 +17,7 @@ class Map
 public:
     // Constructor will accept the vector of all airports in the map
     //Map(vector<Node> airports);
-    Map(Flights graph, string start, string destination, string inputImagePath, string outputImagePath);
+    Map(vector<string> path, string inputImagePath, string outputImagePath, vector<Node> airports);
 
     // getCoordinates will go through the vector of airports and return the latitude and longitude of a specific
     std::pair<double, double> getCoordinates(string code);
