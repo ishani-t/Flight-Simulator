@@ -12,10 +12,9 @@
 
 using namespace std;
 
-//https://courses.engr.illinois.edu/cs225/fa2021/resources/dijkstra/
-
 class Dijkstra {
     public:
+        //https://courses.engr.illinois.edu/cs225/fa2021/resources/dijkstra/
         void solveDijkstra(Flights graph, string start, string destination);
         vector<string> findShortestPath();
 
@@ -26,8 +25,6 @@ class Dijkstra {
         //Flights graph_;
         Node start_airport_;
         Node dest_airport_;
-        
-        vector<Node> nodes_;
 
         //maps current node to previous node
         std::unordered_map<string,string> previous_;

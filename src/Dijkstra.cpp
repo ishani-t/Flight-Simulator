@@ -1,22 +1,23 @@
 #include "Dijkstra.h"
 #include <cmath>
 
+
 void Dijkstra::solveDijkstra(Flights graph, string start, string destination) {
-    nodes_ = graph.getAirports();
+    vector<Node> nodes = graph.getAirports();
     for (size_t i = 0; i < graph.getAirports().size(); i++) {
-        if (nodes_[i].getCode() == destination) {
-            dest_airport_ = nodes_[i];
+        if (nodes[i].getCode() == destination) {
+            dest_airport_ = nodes[i];
         }
-        if (nodes_[i].getCode() == start) {
-            start_airport_ = nodes_[i];
-            distances_.insert(make_pair(nodes_[i].getCode(),0.0));
+        if (nodes[i].getCode() == start) {
+            start_airport_ = nodes[i];
+            distances_.insert(make_pair(nodes[i].getCode(),0.0));
 
         } else {
-            distances_.insert(std::pair<string,double>(nodes_[i].getCode(), INFINITY));
+            distances_.insert(std::pair<string,double>(nodes[i].getCode(), INFINITY));
         }
 
-        previous_.insert(make_pair(nodes_[i].getCode(),""));
-        visited_.insert(make_pair(nodes_[i].getCode(),false));
+        previous_.insert(make_pair(nodes[i].getCode(),""));
+        visited_.insert(make_pair(nodes[i].getCode(),false));
     }
     
     pair<double,string> start_node = make_pair(0,start);
@@ -47,6 +48,25 @@ void Dijkstra::solveDijkstra(Flights graph, string start, string destination) {
     }
 }
 
+vector<string> Dijkstra::findShortestPath() {
+    string dest_name = dest_airport_.getCode();
+    string start_name = start_airport_.getCode();
+    
+    
+    shortest_path.push_back(dest_name);
+    while(dest_name != start_name) {
+        //Checks and returns empty vector if there is no path
+        if (shortest_path.back() == previous_[dest_name]) {
+            return vector<string>();
+        }
+        shortest_path.push_back(previous_[dest_name]);
+        dest_name = previous_[dest_name];
+    }
+
+    std::reverse(shortest_path.begin(), shortest_path.end());
+    return shortest_path;
+}
+
 Node Dijkstra::findNode(vector<Node> airports, string code) {
 
     for (size_t i = 0; i < airports.size(); i++) {
@@ -55,21 +75,6 @@ Node Dijkstra::findNode(vector<Node> airports, string code) {
         }
     }
     return airports[0];
-}
-
-vector<string> Dijkstra::findShortestPath() {
-    string dest_name = dest_airport_.getCode();
-    string start_name = start_airport_.getCode();
-    
-    
-    shortest_path.push_back(dest_name);
-    while(dest_name != start_name) {
-        shortest_path.push_back(previous_[dest_name]);
-        dest_name = previous_[dest_name];
-    }
-
-    std::reverse(shortest_path.begin(), shortest_path.end());
-    return shortest_path;
 }
 
 double Dijkstra::findEdgeWeight(vector<Edge> edges, Node start, Node end) {
@@ -81,19 +86,3 @@ double Dijkstra::findEdgeWeight(vector<Edge> edges, Node start, Node end) {
     } 
     return INFINITY;
 }
-/*
-  initialize distances  // initialize tentative distance value
-  initialize previous   // initialize a map that maps current node -> its previous node
-  initialize priority_queue   // initialize the priority queue
-  initialize visited
-
-  while the top of priority_queue is not destination:
-      get the current_node from priority_queue
-      for neighbor in current_node's neighbors and not in visited:
-          if update its neighbor's distances:
-              previous[neighbor] = current_node
-      save current_node into visited
-
-  extract path from previous
-  return path and distance
-  */
