@@ -8,3 +8,6 @@ This week, we met to further research together and discuss what kind of approach
 
 ### Week 3
 This week, we were mainly working on coding the BFS traversal and Dijkstra's algorithm, which are their own separate classes. We finished BFS along with its helper methods in the Flight class and wrote its respective test cases. We are almost done with Dijkstra's algorithm. Additionally, we added the catch files to support testing and wrote tests for the Flights and Parser classes that we wrote last week. Lastly, we started discussing we will implement our graphical output. 
+
+### Week 4
+This week we finished the Dijkstra algorithm and wrote its test cases and improved the BFS algorithm.  Additionally, we implemented the graphical output by creating a Map class that reads in a file and outputs the result to a file called Output.png.  To create a PNG, we imported the CS225 PNG class.  
