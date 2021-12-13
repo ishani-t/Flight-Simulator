@@ -1,38 +1,50 @@
 #include "BFS.h"
 #include <algorithm>
 
-std::vector<Node> BFS::traversal(Flights & flights, Node & start) {
-    std::queue<Node> queue;
+std::vector<Node> BFS::traversal(Flights flights, Node start) {
     queue.push(start);
-    std::vector<Node> reachableAirports;
-    std::vector<Node> airports = flights.getAirports();
-    std::vector<bool> visited;
-    
-    auto sourceIterator = find(airports.begin(), airports.end(), start);
-    int sourceIndex = distance(airports.begin(), sourceIterator);
-    
-    for (unsigned long i = 0; i < flights.getAirports().size(); i++) {
-        visited.push_back(false);
-    }
-    visited[sourceIndex] = true;
 
+    airports = flights.getAirports();
+    //finding the index of the start airport
+    std::vector<Node>::iterator first = airports.begin(); 
+    std::vector<Node>::iterator startAirport = find(first, airports.end(), start);
+    int current = 0;
+    while (first != startAirport) {
+        current++;
+        first++;
+    }
+    int startIndex = current;
+
+    //setting each airport to unvisited 
+    unsigned long counter = 0;  
+    while (counter < flights.getAirports().size()) {
+        visited.push_back(false);
+        counter++;
+    }
+    visited[startIndex] = true;
 
     while(queue.empty() == false) {
         Node cur = queue.front();
         reachableAirports.push_back(cur);
-        queue.pop();
+        //getting reachable airports
         std::vector<Node> adjacent = flights.getAdjacentNodes(cur);
-
+        //setting reachable airports to visited
         for (unsigned int i = 0; i < adjacent.size(); i++) {
-            auto curIterator = find(airports.begin(), airports.end(), adjacent[i]);
-            int curPosition = distance(airports.begin(), curIterator);
+            std::vector<Node>::iterator first = airports.begin();
+            std::vector<Node>::iterator curIterator = find(first, airports.end(), adjacent[i]);
+            int current = 0;
+            while (first != curIterator) {
+                current++;
+                first++;
+            }
+            int curPosition = current;
 
-            if (!visited[curPosition]) {
-                visited[curPosition] = true;
+            if (visited[curPosition] == false) {
                 queue.push(adjacent[i]);
+                visited[curPosition] = true;
             }
         }
+        queue.pop();
     }
-    
     return reachableAirports;
 } 

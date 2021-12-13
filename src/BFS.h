@@ -10,5 +10,10 @@ using namespace std;
 
 class BFS {
     public: 
-        std::vector<Node> traversal(Flights & flights, Node & start);
+        std::vector<Node> traversal(Flights flights, Node start);
+    private:
+        std::queue<Node> queue;
+        std::vector<Node> reachableAirports;
+        std::vector<Node> airports;
+        std::vector<bool> visited;
 };
