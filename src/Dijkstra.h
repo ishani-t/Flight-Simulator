@@ -14,15 +14,22 @@ using namespace std;
 
 class Dijkstra {
     public:
-        //https://courses.engr.illinois.edu/cs225/fa2021/resources/dijkstra/
+        /**
+         * Finds shortest path between given airports from given start and destination airpot codes.
+         * https://courses.engr.illinois.edu/cs225/fa2021/resources/dijkstra/
+         */
         void solveDijkstra(Flights graph, string start, string destination);
+        
+        //Finds and returns shortest path from input start and ending airports
         vector<string> findShortestPath();
 
     private:
+        //Returns node matching given airport code
         Node findNode(vector<Node> nodes, string code);
+
+        //Returns edge weight if edge exists between given start and end node
         double findEdgeWeight(vector<Edge> edges, Node start, Node end);
 
-        //Flights graph_;
         Node start_airport_;
         Node dest_airport_;
 
