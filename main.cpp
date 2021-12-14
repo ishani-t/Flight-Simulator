@@ -15,10 +15,10 @@ using std::vector;
 int main()
 {
     Parser Parser_1("./data/airports.dat.txt");
-    std::cout << "parsed airports\n";
+    //std::cout << "parsed airports\n";
 
     Parser Parser_2("./data/routes.dat.txt");
-    std::cout << "parsed routes\n";
+    //std::cout << "parsed routes\n";
 
     Flights Flights_1(Parser_1.getData(), Parser_2.getData());
     std::cout << "created flights data structures\n";
@@ -27,9 +27,12 @@ int main()
 
     // vector<string> path = {"ORD", "LHR"};
     Dijkstra d;
-    d.solveDijkstra(Flights_1, "ORD", "LHR");
-    std::cout << "solved dijkstra";
+    d.solveDijkstra(Flights_1, "CMI", "MNL");
+    std::cout << "This is the path from Willard Airport to Ninoy Aquino International Airport\n";
     vector<string> path = d.findShortestPath();
+    for (unsigned long i = 0; i < path.size(); i++) {
+        std::cout<<"Airport " << i << " is: " << path[i] << std::endl;
+    }
 
     Map Map_1(path, "map_grid.png", "Output.png", airports);
 }
