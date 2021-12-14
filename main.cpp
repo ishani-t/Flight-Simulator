@@ -24,11 +24,11 @@ int main()
 
     Dijkstra d;
     d.solveDijkstra(Flights_1, "CMI", "MNL");
-    std::cout << "This is the path from Willard Airport to Ninoy Aquino International Airport\n";
+    std::cout << "This is the path from Willard Airport (CMI) to Ninoy Aquino International Airport (MNL)\n";
     vector<string> path = d.findShortestPath();
     for (unsigned long i = 0; i < path.size(); i++) {
         std::cout<<"Airport " << i << " is: " << path[i] << std::endl;
     }
-
+    std::cout << "You can view the flight path in output.png \n";
     Map Map_1(path, "map_grid.png", "Output.png", airports);
 }
