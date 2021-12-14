@@ -78,13 +78,13 @@ void Map::drawLine(string a1, string a2)
         y1 = pixels_1.second;
     }
 
-    int slope = (y2 - y1) / (x2 - x1);
-    int b = y1 - slope * x1;
+    float slope = float(y2 - y1) / float(x2 - x1);
+    float b = y1 - slope * x1;
 
     for (int x = x1; x < x2; x++)
     {
-        int y = slope * x + b;
-        cs225::HSLAPixel &pixel = blank_map_.getPixel(x, y);
+        float y = slope * x + b;
+        cs225::HSLAPixel &pixel = blank_map_.getPixel(x, static_cast<int>(y));
         pixel.h = 0;
         pixel.s = 1;
         pixel.l = 0.50;

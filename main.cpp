@@ -14,18 +14,14 @@ using std::vector;
 
 int main()
 {
-    Parser Parser_1("./data/airports.dat.txt");
-    //std::cout << "parsed airports\n";
+    Parser airportParser("./data/airports.dat.txt");
 
-    Parser Parser_2("./data/routes.dat.txt");
-    //std::cout << "parsed routes\n";
+    Parser routeParser("./data/routes.dat.txt");
 
-    Flights Flights_1(Parser_1.getData(), Parser_2.getData());
-    std::cout << "created flights data structures\n";
+    Flights Flights_1(airportParser.getData(), routeParser.getData());
 
     vector<Node> airports = Flights_1.getAirports();
 
-    // vector<string> path = {"ORD", "LHR"};
     Dijkstra d;
     d.solveDijkstra(Flights_1, "CMI", "MNL");
     std::cout << "This is the path from Willard Airport to Ninoy Aquino International Airport\n";
