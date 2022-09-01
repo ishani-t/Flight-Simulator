@@ -2,9 +2,6 @@
 Final Project for rhuang25-itaraf2-tu11-nealt2
 
 
-# Run 
-Make sure you are on EWS. Navigate to the 'rhuang25-itaraf2-tu11-nealt2' folder. Open a terminal and run:
-
 ```
 module load llvm/6.0.1
 make
